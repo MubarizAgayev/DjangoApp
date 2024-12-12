@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otaq Rezervasiyası</title>
+    <link rel="stylesheet" href="{% static 'main/styles.css' %}">
+</head>
+<body>
+    <h1>Otaq Rezervasiyası</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="room">Otaq:</label>
+        <select id="room" name="room">
+            {% for room in rooms %}
+                <option value="{{ room.id }}">{{ room.name }} (Tutum: {{ room.capacity }})</option>
+            {% endfor %}
+        </select>
+        <label for="date">Tarix:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="time">Vaxt:</label>
+        <input type="time" id="time" name="time" required>
+        <label for="name">Adınız:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="contact">Əlaqə Nömrəsi:</label>
+        <input type="text" id="contact" name="contact" required>
+        <button type="submit">Rezervasiya Et</button>
+    </form>
+</body>
+</html>

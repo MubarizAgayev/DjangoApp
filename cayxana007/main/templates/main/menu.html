@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menyu</title>
+    <link rel="stylesheet" href="{% static 'main/styles.css' %}">
+</head>
+<body>
+    <h1>Menyu</h1>
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        <ul>
+            {% for item in category.items.all %}
+                <li>
+                    {{ item.name }} - {{ item.price }} AZN
+                    <p>{{ item.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
